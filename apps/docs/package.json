@@ -20,6 +20,7 @@
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "motion": "catalog:",
+    "modern-monaco": "catalog:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "catalog:",

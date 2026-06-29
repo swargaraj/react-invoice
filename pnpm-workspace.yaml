@@ -33,6 +33,9 @@ catalog:
   react-router-dom: ^7.18.0
   react-router: ^8.0.1
   motion: ^12.42.0
+  modern-monaco: ^0.4.2
+  '@shikijs/langs': ^4.3.0
+  '@shikijs/themes': ^4.3.0
 overrides:
   vite: "catalog:"
   vitest: "catalog:"

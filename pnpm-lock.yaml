@@ -247,6 +247,9 @@ catalogs:
     cnfast:
       specifier: ^0.0.8
       version: 0.0.8
+    modern-monaco:
+      specifier: ^0.4.2
+      version: 0.4.2
     motion:
       specifier: ^12.42.0
       version: 12.42.0
@@ -326,6 +329,9 @@ importers:
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
+      modern-monaco:
+        specifier: 'catalog:'
+        version: 0.4.2(typescript@6.0.3)
       motion:
         specifier: 'catalog:'
         version: 12.42.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -2545,6 +2551,11 @@ packages:
 
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
+
+  modern-monaco@0.4.2:
+    resolution: {integrity: sha512-BX4caXiq0yInbwGm3pyKcUxTMaEdt8HUh1NhWEJoJPYAMhJTUW0G85Pq4EzH9evlTTIqeQUGGVZBk6Wk2JQ/rQ==}
+    peerDependencies:
+      typescript: '>= 6.0.0'
 
   motion-dom@12.42.0:
     resolution: {integrity: sha512-M63h4n8R+quJdNhBwuLlgxM+OLYa9+I/T2pzDRboB9fLXRdbou+Gw7Zury+SkpaCyACP1JHSjHgZ1EgTkBr30w==}
@@ -5244,6 +5255,10 @@ snapshots:
       brace-expansion: 5.0.6
 
   minimist@1.2.8: {}
+
+  modern-monaco@0.4.2(typescript@6.0.3):
+    dependencies:
+      typescript: 6.0.3
 
   motion-dom@12.42.0:
     dependencies:
