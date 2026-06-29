@@ -64,7 +64,7 @@
     "react": "^19",
     "react-dom": "^19",
     "tsdown": "^0.22.3",
-    "typescript": "^5"
+    "typescript": "^6.0.0"
   },
   "peerDependencies": {
     "react": "^18 || ^19",
