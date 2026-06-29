@@ -1,25 +1,21 @@
 import { useCallback, useEffect, useState } from "react";
-import { codeToHtml, type BundledLanguage, type BundledTheme } from "shiki";
 import { Button } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Tick02Icon, CopyIcon } from "@hugeicons/core-free-icons";
+import { getCodeHtml, type SupportedLanguage, type SupportedTheme } from "@/lib/shiki";
 
 interface CodeBlockProps {
   code: string;
-  language?: BundledLanguage;
-  theme?: BundledTheme;
+  language?: SupportedLanguage;
+  theme?: SupportedTheme;
 }
 
-export function CodeBlock({
-  code,
-  language = "javascript",
-  theme = "kanagawa-wave",
-}: CodeBlockProps) {
+export function CodeBlock({ code, language = "ts", theme = "kanagawa-wave" }: CodeBlockProps) {
   const [html, setHtml] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    codeToHtml(code.trim(), { lang: language, theme }).then(setHtml);
+    getCodeHtml(code.trim(), language, theme).then(setHtml);
   }, [code, language, theme]);
 
   const handleCopy = useCallback(() => {

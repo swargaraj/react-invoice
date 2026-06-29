@@ -14,6 +14,8 @@
     "@fontsource-variable/geist-mono": "catalog:",
     "@hugeicons/core-free-icons": "catalog:",
     "@hugeicons/react": "catalog:",
+    "@shikijs/langs": "^4.3.0",
+    "@shikijs/themes": "^4.3.0",
     "@tailwindcss/vite": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",

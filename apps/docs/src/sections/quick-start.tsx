@@ -55,6 +55,21 @@ function InvoiceView({ data }) {
         language="ts"
         code="const blob = await renderToPdf(<InvoiceView data={data} />);"
       />
+      <p className="text-muted-foreground">
+        The function returns a <Code>Blob</Code>, which can be downloaded or uploaded like any other
+        file. To save it in the browser:
+      </p>
+      <CodeBlock
+        language="ts"
+        code={`const url = URL.createObjectURL(blob);
+            
+const link = document.createElement("a");
+link.href = url;
+link.download = "invoice.pdf";
+link.click();
+
+URL.revokeObjectURL(url);`}
+      />
     </section>
   );
 }
