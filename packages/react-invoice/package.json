@@ -1,0 +1,73 @@
+{
+  "name": "react-invoice",
+  "version": "0.1.0",
+  "description": "Build invoices once with React and Tailwind CSS, then render them as HTML and PDF.",
+  "keywords": [
+    "billing",
+    "document",
+    "html",
+    "invoice",
+    "invoicing",
+    "pdf",
+    "react",
+    "react-pdf",
+    "receipt",
+    "renderer",
+    "tailwind",
+    "tailwindcss"
+  ],
+  "homepage": "https://react-invoice.swrg.dev",
+  "bugs": {
+    "url": "https://github.com/swargaraj/react-invoice/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swargaraj/react-invoice.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-pdf/renderer": "^4",
+    "cnfast": "^0.0.8",
+    "react-pdf-tailwind": "^3"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "react": "^19",
+    "react-dom": "^19",
+    "tsdown": "^0.22.3",
+    "typescript": "^5"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  }
+}

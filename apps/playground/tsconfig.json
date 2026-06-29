@@ -1,0 +1,15 @@
+{
+  "extends": "../../packages/tsconfig/vite.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "composite": true,
+    "paths": {
+      "react-invoice": ["../../packages/react-invoice/src"],
+      "react-invoice/*": ["../../packages/react-invoice/src/*"]
+    }
+  },
+  "include": ["src/**/*", "vite.config.ts"],
+  "exclude": ["node_modules", "dist"],
+  "references": [{ "path": "../../packages/react-invoice" }]
+}

@@ -1,0 +1,16 @@
+import { defineConfig } from "tsdown";
+
+export default defineConfig({
+  entry: ["src/index.ts"],
+  format: ["esm", "cjs"],
+  dts: true,
+  clean: true,
+  outDir: "dist",
+  target: "es2022",
+  minify: true,
+  treeshake: true,
+  sourcemap: true,
+  deps: {
+    neverBundle: ["react", "react-dom", "@react-pdf/renderer", "react-pdf-tailwind"],
+  },
+});

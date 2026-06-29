@@ -1,0 +1,35 @@
+{
+  "name": "react-invoice-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React library for building and rendering invoices",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vp run playground#dev",
+    "dev:docs": "vp run docs#dev",
+    "build": "vp run -r build",
+    "check": "vp check",
+    "test": "vp test",
+    "lint": "vp lint",
+    "prepare": "vp config"
+  },
+  "dependencies": {
+    "cnfast": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.9.0",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

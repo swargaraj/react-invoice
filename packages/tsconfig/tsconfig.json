@@ -1,0 +1,8 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["*.json"],
+  "exclude": ["node_modules"]
+}

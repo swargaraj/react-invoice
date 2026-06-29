@@ -1,0 +1,12 @@
+{
+  "name": "@react-invoice/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "files": [
+    "*.json"
+  ],
+  "devDependencies": {
+    "typescript": "catalog:"
+  }
+}
