@@ -30,6 +30,9 @@ catalog:
   "@fontsource-variable/geist": ^5.2.9
   shiki: ^4.3.0
   "@fontsource-variable/geist-mono": ^5.2.8
+  react-router-dom: ^7.18.0
+  react-router: ^8.0.1
+  motion: ^12.42.0
 overrides:
   vite: "catalog:"
   vitest: "catalog:"

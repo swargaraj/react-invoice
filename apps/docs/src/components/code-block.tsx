@@ -33,7 +33,7 @@ export function CodeBlock({ code, language = "ts", theme = "kanagawa-wave" }: Co
   }
 
   return (
-    <div className="relative w-full text-sm group">
+    <div className="relative w-full text-sm group border rounded-lg">
       <Button
         onClick={handleCopy}
         size="icon"
