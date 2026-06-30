@@ -1,5 +1,7 @@
 export const DEFAULT_CODE = `import { Invoice, registerFont, setupPdf } from "react-invoice";
 
+setupPdf({ ptPerRem: 16 });
+
 registerFont({
   family: "Geist",
   src: "https://cdn.jsdelivr.net/fontsource/fonts/geist-mono@latest/latin-400-normal.ttf",
@@ -60,7 +62,7 @@ export default function InvoiceView() {
       ))}
       </Invoice.Section>
 
-      <Invoice.Section className="w-72 ml-auto">
+      <Invoice.Section className="w-72 ml-auto mb-24">
         <Invoice.Section className="flex-row justify-between py-1">
           <Invoice.Text className="text-sm">Subtotal</Invoice.Text>
           <Invoice.Text className="text-sm">$4,050.00</Invoice.Text>
@@ -78,12 +80,12 @@ export default function InvoiceView() {
           <Invoice.Text className="text-sm">$50.00</Invoice.Text>
         </Invoice.Section>
         <Invoice.Section className="flex-row justify-between py-1 border-t pt-2">
-          <Invoice.Text className="text-sm font-bold">Total</Invoice.Text>
-          <Invoice.Text className="text-sm font-bold">$3,897.50</Invoice.Text>
+          <Invoice.Text className="text-sm">Total</Invoice.Text>
+          <Invoice.Text className="text-sm">$3,897.50</Invoice.Text>
         </Invoice.Section>
       </Invoice.Section>
 
-      <Invoice.Section className="flex-row mt-24">
+      <Invoice.Section className="flex-row mb-4">
         <Invoice.Section className="flex-1 flex-col">
           <Invoice.Text className="text-xs">PAYMENT IS DUE WITHIN 14 DAYS OF THE INVOICE DATE. ALL CHECKS PAYABLE TO ACME STUDIO FOR PROCESSING.
           </Invoice.Text>
@@ -92,6 +94,13 @@ export default function InvoiceView() {
           <Invoice.Text className="text-xs">THANK YOU FOR YOUR BUSINESS</Invoice.Text>
         </Invoice.Section>
       </Invoice.Section>
+
+      <Invoice.Link
+        className="text-[9px] text-gray-400 no-underline"
+        href="https://dribbble.com/shots/24691860-Invoice-Template"
+      >
+        Original design by Kawsar Ahmed: dribbble.com/shots/24691860-Invoice-Template
+      </Invoice.Link>
     </Invoice.Root>
   );
 }`;

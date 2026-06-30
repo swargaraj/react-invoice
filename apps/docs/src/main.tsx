@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Page from "./page";
 import { Showcase } from "./showcase";
-import { Playground } from "./playground/index";
+import { Playground } from "./playground";
 import { NotFound } from "./not-found";
 import "./style.css";
 

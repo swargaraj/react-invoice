@@ -53,7 +53,7 @@ export function Playground() {
 
     setDownloading(true);
     try {
-      log("info", "Generating PDF");
+      log("info", "Generating PDF.");
       const blob = await renderToPdf(<result.Component />);
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -79,10 +79,10 @@ export function Playground() {
           <HugeiconsIcon icon={ArrowLeft02Icon} className="size-4" />
         </Link>
         <h1 className="text-sm font-medium">React Invoice Playground</h1>
+        <Button size="sm" variant="outline" onClick={handleResetCode}>
+          Default Code
+        </Button>
         <div className="ml-auto flex items-center gap-2">
-          <Button size="sm" variant="outline" onClick={handleResetCode}>
-            Default Code
-          </Button>
           <Button size="sm" onClick={handleDownload} disabled={downloading}>
             Download
             <HugeiconsIcon icon={Pdf01Icon} className="size-4" />

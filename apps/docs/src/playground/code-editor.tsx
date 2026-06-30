@@ -43,6 +43,21 @@ export function CodeEditor({ onCodeChange, initialValue }: WorkspaceProps) {
         contextmenu: true,
       });
 
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
+        const value = editor.getValue();
+        const blob = new Blob([value], { type: "text/tsx" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+
+        a.href = url;
+        a.download = "invoice.tsx";
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
       editorRef.current = editor;
 
       editor.onDidChangeModelContent(() => {

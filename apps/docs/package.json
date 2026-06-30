@@ -23,7 +23,7 @@
     "motion": "catalog:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-invoice": "workspace:*",
+    "react-invoice": "^0.1.3",
     "react-router": "catalog:",
     "shadcn": "^4.12.0",
     "shiki": "catalog:",

@@ -336,8 +336,8 @@ importers:
         specifier: ^19.0.0
         version: 19.2.7(react@19.2.7)
       react-invoice:
-        specifier: workspace:*
-        version: link:../../packages/react-invoice
+        specifier: ^0.1.3
+        version: 0.1.3(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react-router:
         specifier: 'catalog:'
         version: 8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -2801,6 +2801,12 @@ packages:
     resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
       react: ^19.2.7
+
+  react-invoice@0.1.3:
+    resolution: {integrity: sha512-fcKgl5XS6Kbqrb8ieo0aS9CaZy34lun9RKlglLKdFe0hp1IvSO76KsC6j/DEEhkWWa1Q6WJgfyL0IaWyAJ0mqA==}
+    peerDependencies:
+      react: ^18 || ^19
+      react-dom: ^18 || ^19
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -5535,6 +5541,13 @@ snapshots:
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
+
+  react-invoice@0.1.3(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    dependencies:
+      '@react-pdf/renderer': 4.5.1(react@19.2.7)
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+      react-pdf-tailwind: 3.0.0(react@19.2.7)
 
   react-is@16.13.1: {}
 
