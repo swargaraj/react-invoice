@@ -5,7 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
 import { ProgressiveBlur } from "@/components/progressive-blur";
 
-function ShowcaseCard({ title, image }: { title: string, image: string }) {
+function ShowcaseCard({ title, image }: { title: string; image: string }) {
   const [isHover, setIsHover] = useState(false);
 
   return (
@@ -39,7 +39,7 @@ function ShowcaseCard({ title, image }: { title: string, image: string }) {
         }}
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
-          <p className="text-sm font-medium text-primary-foreground p-5">{title}</p>
+        <p className="text-sm font-medium text-primary-foreground p-5">{title}</p>
       </motion.div>
     </div>
   );
@@ -47,7 +47,7 @@ function ShowcaseCard({ title, image }: { title: string, image: string }) {
 
 export function Showcase() {
   return (
-      <main className="flex w-full flex-col mx-auto max-w-2xl items-start gap-8 px-4 py-20">
+    <main className="flex w-full flex-col mx-auto max-w-2xl items-start gap-8 px-4 py-20">
       <Link to="/" className="flex items-center text-sm text-muted-foreground gap-1">
         <HugeiconsIcon icon={ArrowLeft02Icon} className="size-4" /> Go Back Home
       </Link>
@@ -57,8 +57,7 @@ export function Showcase() {
         </div>
         <p>Examples of invoices built with React Invoice.</p>
       </section>
-      <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      </section>
+      <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></section>
     </main>
   );
 }

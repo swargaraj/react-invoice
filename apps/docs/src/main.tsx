@@ -9,13 +9,13 @@ import "./style.css";
 
 ReactDOM.createRoot(document.getElementById("app")!).render(
   <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Page />} />
-          <Route path="/showcase" element={<Showcase />} />
-          <Route path="/playground" element={<Playground />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Page />} />
+        <Route path="/showcase" element={<Showcase />} />
+        <Route path="/playground" element={<Playground />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );

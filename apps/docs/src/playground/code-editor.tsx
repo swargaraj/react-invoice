@@ -1,17 +1,17 @@
 import { useEffect, useRef } from "react";
 import { init } from "modern-monaco";
-import { DEFAULT_CODE } from "./default-code";
 
-interface CodeEditorProps {
-  onChange?: (value: string) => void;
+interface WorkspaceProps {
+  onCodeChange: (value: string) => void;
+  initialValue: string;
 }
 
-export function CodeEditor({ onChange }: CodeEditorProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+export function CodeEditor({ onCodeChange, initialValue }: WorkspaceProps) {
+  const editorContainerRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<any>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!editorContainerRef.current) return;
 
     let disposed = false;
 
@@ -20,10 +20,10 @@ export function CodeEditor({ onChange }: CodeEditorProps) {
         themes: ["kanagawa-wave"],
       });
 
-      if (disposed || !containerRef.current) return;
+      if (disposed || !editorContainerRef.current) return;
 
-      const editor = monaco.editor.create(containerRef.current, {
-        value: DEFAULT_CODE,
+      const editor = monaco.editor.create(editorContainerRef.current, {
+        value: initialValue,
         language: "tsx",
         theme: "kanagawa-wave",
         lineNumbers: "on",
@@ -38,22 +38,32 @@ export function CodeEditor({ onChange }: CodeEditorProps) {
         smoothScrolling: true,
         cursorBlinking: "smooth",
         cursorSmoothCaretAnimation: "on",
+        lineHeight: 22,
+        autoIndent: "full",
+        contextmenu: true,
       });
 
       editorRef.current = editor;
 
       editor.onDidChangeModelContent(() => {
-        onChange?.(editor.getValue());
+        onCodeChange?.(editor.getValue());
       });
 
-      onChange?.(editor.getValue());
+      onCodeChange?.(editor.getValue());
     })();
 
     return () => {
       disposed = true;
       editorRef.current?.dispose();
     };
-  }, [onChange]);
+  }, [onCodeChange]);
 
-  return <div ref={containerRef} className="h-full w-full" />;
+  useEffect(() => {
+    const editor = editorRef.current;
+    if (editor && editor.getValue() !== initialValue) {
+      editor.setValue(initialValue);
+    }
+  }, [initialValue]);
+
+  return <div ref={editorContainerRef} className="h-full w-full" />;
 }
