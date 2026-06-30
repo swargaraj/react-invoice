@@ -1,6 +1,6 @@
 {
   "name": "react-invoice",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Build invoices once with React and Tailwind CSS, then render them as HTML and PDF.",
   "keywords": [
     "billing",
@@ -55,7 +55,6 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4",
-    "cnfast": "^0.0.8",
     "react-pdf-tailwind": "^3"
   },
   "devDependencies": {

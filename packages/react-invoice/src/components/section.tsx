@@ -1,12 +1,20 @@
 import { forwardRef } from "react";
-import { cn } from "cnfast";
+
+export type InvoiceSectionProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const InvoiceSection = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  function InvoiceSection({ className, ...props }, ref) {
-    return <div ref={ref} className={cn("flex flex-col", className)} {...props} />;
+  function InvoiceSection({ children, className, style, ...props }, ref) {
+    return (
+      <div
+        ref={ref}
+        className={`flex flex-col${className ? ` ${className}` : ""}`}
+        style={style}
+        {...props}
+      >
+        {children}
+      </div>
+    );
   },
 );
 
 InvoiceSection.displayName = "Invoice.Section";
-
-export type InvoiceSectionProps = React.HTMLAttributes<HTMLDivElement>;

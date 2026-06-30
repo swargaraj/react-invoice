@@ -53,7 +53,7 @@ export function Components() {
                 <Code>View</Code>
               </td>
             </tr>
-            <tr>
+            <tr className="border-b">
               <td>
                 <Code>Invoice.Link</Code>
               </td>
@@ -62,6 +62,17 @@ export function Components() {
               </td>
               <td className="py-2">
                 <Code>Link</Code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Code>Invoice.Image</Code>
+              </td>
+              <td>
+                <Code>&lt;img&gt;</Code>
+              </td>
+              <td className="py-2">
+                <Code>Image</Code>
               </td>
             </tr>
           </tbody>

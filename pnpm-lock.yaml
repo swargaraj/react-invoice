@@ -415,9 +415,6 @@ importers:
       '@react-pdf/renderer':
         specifier: ^4
         version: 4.5.1(react@19.2.7)
-      cnfast:
-        specifier: ^0.0.8
-        version: 0.0.8
       react-pdf-tailwind:
         specifier: ^3
         version: 3.0.0(react@19.2.7)

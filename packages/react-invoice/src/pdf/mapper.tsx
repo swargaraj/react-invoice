@@ -1,18 +1,29 @@
 import React from "react";
-import { Document, Page, View, Text, Link } from "@react-pdf/renderer";
+
+import { Document, Page, View, Text, Link, Image } from "@react-pdf/renderer";
 import type { DocumentProps, PageProps } from "@react-pdf/renderer";
-import { tw } from "./twind";
+
 import { InvoiceRoot } from "../components/root";
 import { InvoiceText } from "../components/text";
 import { InvoiceSection } from "../components/section";
 import { InvoiceLink } from "../components/link";
+import { InvoiceImage } from "../components/image";
 
-const componentMap = new Map<React.ComponentType, React.ComponentType>([
+import { tw } from "./twind";
+
+const componentMap = new Map<any, any>([
   [InvoiceRoot, Document],
   [InvoiceText, Text],
   [InvoiceSection, View],
   [InvoiceLink, Link],
+  [InvoiceImage, Image],
 ]);
+
+function warnDev(message: string, ...args: unknown[]): void {
+  if (typeof console !== "undefined") {
+    console.warn(`[react-invoice] ${message}`, ...args);
+  }
+}
 
 function resolveStyles(className?: string, style?: React.CSSProperties): Record<string, unknown> {
   const fromClass = className ? (tw(className) as Record<string, unknown>) : {};
@@ -22,6 +33,10 @@ function resolveStyles(className?: string, style?: React.CSSProperties): Record<
     merged.flexDirection = "row";
   }
   return merged;
+}
+
+function hasResolvedStyles(resolvedStyle: Record<string, unknown>): boolean {
+  return Object.keys(resolvedStyle).length > 0;
 }
 
 function isEmpty(node: React.ReactNode): boolean {
@@ -55,7 +70,7 @@ function convertElement(
           size={pageOptions?.size ?? "A4"}
           {...(pageOptions as any)}
           style={[
-            Object.keys(resolvedStyle).length ? (resolvedStyle as any) : undefined,
+            hasResolvedStyles(resolvedStyle) ? (resolvedStyle as any) : undefined,
             pageOptions?.style,
           ].filter(Boolean)}
         >
@@ -65,39 +80,48 @@ function convertElement(
     );
   }
 
-  const PdfComponent = componentMap.get(type as React.ComponentType);
+  const PdfComponent = componentMap.get(type);
   if (PdfComponent) {
-    const { children, className, style, ...rest } = props as {
-      children?: React.ReactNode;
+    const { className, style, ...rest } = props as {
       className?: string;
       style?: React.CSSProperties;
       [key: string]: unknown;
     };
-    const pdfChildren =
-      PdfComponent === Text || PdfComponent === Link
-        ? processTextChildren(children, documentOptions, pageOptions)
-        : processChildren(children, documentOptions, pageOptions);
+    const isText = PdfComponent === Text || PdfComponent === Link;
+    const pdfChildren = isText
+      ? processTextChildren(rest.children as React.ReactNode, documentOptions, pageOptions)
+      : processChildren(rest.children as React.ReactNode, documentOptions, pageOptions);
     const resolvedStyle = resolveStyles(className, style);
-    return (
-      <PdfComponent
-        key={key ?? undefined}
-        style={Object.keys(resolvedStyle).length ? resolvedStyle : undefined}
-        {...(rest as any)}
-      >
-        {pdfChildren}
-      </PdfComponent>
-    );
+    const pdfProps: Record<string, unknown> = {
+      key: key ?? undefined,
+      style: hasResolvedStyles(resolvedStyle) ? resolvedStyle : undefined,
+      children: pdfChildren,
+    };
+    return React.createElement(PdfComponent, pdfProps);
   }
 
   if (typeof type === "function") {
     try {
-      const result = (type as (p: Record<string, unknown>) => React.ReactNode)(
+      const rendered = (type as (p: Record<string, unknown>) => React.ReactNode)(
         props as Record<string, unknown>,
       );
-      if (React.isValidElement(result)) return convertElement(result, documentOptions, pageOptions);
-      if (result != null) return <>{result}</>;
+      if (React.isValidElement(rendered)) {
+        return convertElement(rendered, documentOptions, pageOptions);
+      }
+      if (rendered != null) return <>{rendered}</>;
       return null;
-    } catch {
+    } catch (err) {
+      const name =
+        typeof type === "function"
+          ? (type as { displayName?: string; name?: string }).displayName ||
+            (type as { displayName?: string; name?: string }).name ||
+            "Anonymous"
+          : "Anonymous";
+      warnDev(
+        `Failed to render component "${name}". ` +
+          `Components with hooks/context/refs cannot be rendered inline — wrap them in a supported component (Invoice.Root, Invoice.Text, Invoice.Section, Invoice.Link, Invoice.Image).`,
+        err,
+      );
       return null;
     }
   }
@@ -116,13 +140,14 @@ function convertElement(
     return (
       <View
         key={key ?? undefined}
-        style={Object.keys(resolvedStyle).length ? (resolvedStyle as any) : undefined}
+        style={hasResolvedStyles(resolvedStyle) ? (resolvedStyle as any) : undefined}
       >
         {pdfChildren}
       </View>
     );
   }
 
+  warnDev("Unknown element type skipped:", type);
   return null;
 }
 
@@ -159,5 +184,10 @@ export function convertToPdf(
   documentOptions?: DocumentProps,
   pageOptions?: PageProps,
 ): React.ReactElement {
-  return convertElement(element, documentOptions, pageOptions) ?? <View />;
+  const result = convertElement(element, documentOptions, pageOptions);
+  if (!result) {
+    warnDev("Empty input, returning fallback View");
+    return <View />;
+  }
+  return result;
 }

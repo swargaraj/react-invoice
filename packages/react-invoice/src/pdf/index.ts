@@ -11,7 +11,7 @@ export function registerFont(
 ): void {
   const { variable, ...fontOptions } = options;
   Font.register(fontOptions);
-  if (variable) {
+  if (variable && fontOptions.family) {
     const familyKey = variable.replace(/^font-/, "");
     extendTwConfig({ fontFamily: { [familyKey]: [fontOptions.family] } });
   }

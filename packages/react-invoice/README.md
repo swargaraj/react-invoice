@@ -70,6 +70,7 @@ const blob = await renderToPdf(<InvoiceView />);
 | `Invoice.Section` | `<div>`     | `View`              |
 | `Invoice.Text`    | `<p>`       | `Text`              |
 | `Invoice.Link`    | `<a>`       | `Link`              |
+| `Invoice.Image`   | `<img>`     | `Image`             |
 
 ## Documentation
 
