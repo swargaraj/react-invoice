@@ -99,7 +99,7 @@ export function InvoiceDocument({ logo }: { logo?: string }) {
       ))}
 
       {/* Totals */}
-      <Invoice.Section className="flex-row justify-end mt-12">
+      <Invoice.Section className="flex-row justify-end mt-12 px-3.5">
         <Invoice.Section className="w-56 border-t border-gray-200 pt-4">
           <Invoice.Section className="flex-row justify-between mb-4">
             <Invoice.Text className="text-[11px] text-gray-500">Subtotal</Invoice.Text>
