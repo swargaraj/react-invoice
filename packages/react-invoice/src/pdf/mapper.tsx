@@ -92,8 +92,9 @@ function convertElement(
       ? processTextChildren(rest.children as React.ReactNode, documentOptions, pageOptions)
       : processChildren(rest.children as React.ReactNode, documentOptions, pageOptions);
     const resolvedStyle = resolveStyles(className, style);
+    const { children: _children, ...restProps } = rest;
     const pdfProps: Record<string, unknown> = {
-      key: key ?? undefined,
+      ...restProps,
       style: hasResolvedStyles(resolvedStyle) ? resolvedStyle : undefined,
       children: pdfChildren,
     };
