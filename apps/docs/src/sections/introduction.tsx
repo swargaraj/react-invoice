@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 
 export function Introduction() {
@@ -6,6 +7,16 @@ export function Introduction() {
       <div className="flex items-center justify-between">
         <h1>React Invoice</h1>
         <div className="flex items-center">
+          <Link to="/showcase">
+            <Button variant="ghost" size="sm">
+              Showcase
+            </Button>
+          </Link>
+          <Link to="/playground">
+            <Button variant="ghost" size="sm" className="mr-2">
+              Playground
+            </Button>
+          </Link>
           <a
             href="https://github.com/swargaraj/react-invoice"
             target="_blank"
