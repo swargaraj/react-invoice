@@ -26,7 +26,7 @@ export function InvoiceDocument({ logo }: { logo?: string }) {
   const total = subtotal - discount + tax;
 
   return (
-    <Invoice.Root className="p-10 font-geist text-xs text-gray-900">
+    <Invoice.Root className="p-10 font-geist text-xs">
       {/* Header */}
       <Invoice.Section className="flex-row justify-between items-center pb-4 mb-6 border-b border-gray-200">
         <Invoice.Section className="flex-row justify-center gap-2">
@@ -63,14 +63,14 @@ export function InvoiceDocument({ logo }: { logo?: string }) {
       {/* Bill from / Bill to */}
       <Invoice.Section className="flex-row justify-between mb-8">
         <Invoice.Section className="flex-1">
-          <Invoice.Text className="text-[11px] text-gray-400 mb-3">Bill from:</Invoice.Text>
+          <Invoice.Text className="text-[11px] text-gray-500 mb-3">Bill from:</Invoice.Text>
           <Invoice.Text className="text-[11px] leading-[1.5]">Google Design Inc</Invoice.Text>
           <Invoice.Text className="text-[11px] leading-[1.5]">
             16/345 Palatial Avenue, South Mascot, 2026
           </Invoice.Text>
         </Invoice.Section>
         <Invoice.Section className="flex-1">
-          <Invoice.Text className="text-[11px] text-gray-400 mb-3">Bill to:</Invoice.Text>
+          <Invoice.Text className="text-[11px] text-gray-500 mb-3">Bill to:</Invoice.Text>
           <Invoice.Text className="text-[11px] leading-[1.5]">Figma Inc</Invoice.Text>
           <Invoice.Text className="text-[11px] leading-[1.5]">
             760 Market Street, Floor 10, United States
@@ -97,6 +97,28 @@ export function InvoiceDocument({ logo }: { logo?: string }) {
           </Invoice.Text>
         </Invoice.Section>
       ))}
+
+      {/* Totals */}
+      <Invoice.Section className="flex-row justify-end mt-12">
+        <Invoice.Section className="w-56 border-t border-gray-200 pt-4">
+          <Invoice.Section className="flex-row justify-between mb-4">
+            <Invoice.Text className="text-[11px] text-gray-500">Subtotal</Invoice.Text>
+            <Invoice.Text className="text-[11px] font-bold">{fmt(subtotal)}</Invoice.Text>
+          </Invoice.Section>
+          <Invoice.Section className="flex-row justify-between mb-4">
+            <Invoice.Text className="text-[11px] text-gray-500">Discount</Invoice.Text>
+            <Invoice.Text className="text-[11px] font-bold">0%</Invoice.Text>
+          </Invoice.Section>
+          <Invoice.Section className="flex-row justify-between mb-4">
+            <Invoice.Text className="text-[11px] text-gray-500">Tax</Invoice.Text>
+            <Invoice.Text className="text-[11px] font-bold">{fmt(tax)}</Invoice.Text>
+          </Invoice.Section>
+          <Invoice.Section className="flex-row justify-between">
+            <Invoice.Text className="text-[11px] text-gray-500">Total</Invoice.Text>
+            <Invoice.Text className="text-[16px] font-bold">{fmt(total)}</Invoice.Text>
+          </Invoice.Section>
+        </Invoice.Section>
+      </Invoice.Section>
 
       {/* Credit */}
       <Invoice.Link
