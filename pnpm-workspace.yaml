@@ -33,6 +33,11 @@ catalog:
   react-router-dom: ^7.18.0
   react-router: ^8.0.1
   motion: ^12.42.0
+  modern-monaco: ^0.4.2
+  "@shikijs/langs": ^4.3.0
+  "@shikijs/themes": ^4.3.0
+  "@codesandbox/sandpack-react": ^2.2.0
+  sucrase: ^3.35.1
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
@@ -43,3 +48,7 @@ peerDependencyRules:
   allowedVersions:
     vite: "*"
     vitest: "*"
+allowBuilds:
+  es5-ext: true
+minimumReleaseAgeExclude:
+  - react-invoice@0.1.2 || 0.1.3

@@ -6,8 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "vp run playground#dev",
-    "dev:docs": "vp run docs#dev",
+    "dev": "vp run docs#dev",
     "build": "vp run -r build",
     "check": "vp check",
     "test": "vp test",
