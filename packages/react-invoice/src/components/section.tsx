@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
 
+export type InvoiceSectionProps = React.HTMLAttributes<HTMLDivElement>;
+
 export const InvoiceSection = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   function InvoiceSection({ children, className, style, ...props }, ref) {
     return (
@@ -16,5 +18,3 @@ export const InvoiceSection = forwardRef<HTMLDivElement, React.HTMLAttributes<HT
 );
 
 InvoiceSection.displayName = "Invoice.Section";
-
-export type InvoiceSectionProps = React.HTMLAttributes<HTMLDivElement>;
