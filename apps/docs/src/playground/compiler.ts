@@ -1,6 +1,6 @@
 import React from "react";
 import { transform } from "sucrase";
-import { Invoice } from "react-invoice";
+import { Invoice, registerFont, setupPdf } from "react-invoice";
 
 export interface CompileSuccess {
   Component: React.ComponentType;
@@ -36,6 +36,32 @@ function validateAndStripImports(source: string): string {
     .replace(/^\s*import\s+["'][^"']*["'];?\s*$/gm, "");
 }
 
+export interface FontInfo {
+  family: string;
+  src: string;
+  variable?: string;
+}
+
+export function extractFonts(code: string): FontInfo[] {
+  const fonts: FontInfo[] = [];
+  const registerFontRegex = /registerFont\s*\(\s*\{([^}]*)\}\s*\)/gs;
+  let match;
+  while ((match = registerFontRegex.exec(code)) !== null) {
+    const body = match[1] ?? "";
+    const familyMatch = body.match(/family\s*:\s*["']([^"']+)["']/);
+    const srcMatch = body.match(/src\s*:\s*["']([^"']+)["']/);
+    const variableMatch = body.match(/variable\s*:\s*["']([^"']+)["']/);
+    if (familyMatch?.[1] && srcMatch?.[1]) {
+      fonts.push({
+        family: familyMatch[1],
+        src: srcMatch[1],
+        variable: variableMatch?.[1],
+      });
+    }
+  }
+  return fonts;
+}
+
 export function compileCode(code: string): CompileResult {
   try {
     const cleanedCode = validateAndStripImports(code);
@@ -47,7 +73,7 @@ export function compileCode(code: string): CompileResult {
       jsxFragmentPragma: "React.Fragment",
     });
 
-    const scope = { React, Invoice };
+    const scope = { React, Invoice, registerFont, setupPdf };
     const scopeKeys = Object.keys(scope);
     const scopeValues = Object.values(scope);
 

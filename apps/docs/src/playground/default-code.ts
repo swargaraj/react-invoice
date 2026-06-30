@@ -1,5 +1,11 @@
 export const DEFAULT_CODE = `import { Invoice, registerFont, setupPdf } from "react-invoice";
 
+registerFont({
+  family: "Geist",
+  src: "https://cdn.jsdelivr.net/fontsource/fonts/geist-mono@latest/latin-400-normal.ttf",
+  variable: "font-geist",
+});
+
 const data = {
   items: [
     { id: "1", description: "Widget Design", quantity: 10, unitPrice: "100.00", amount: "1,000.00" },
@@ -11,7 +17,7 @@ const data = {
 
 export default function InvoiceView() {
   return (
-    <Invoice.Root className="bg-[#F5F1EE] p-10 text-sm uppercase">
+    <Invoice.Root className="bg-[#F5F1EE] p-10 text-sm uppercase font-geist">
       <Invoice.Section className="flex-row justify-between items-start mb-12">
         <Invoice.Text className="text-[2.5rem] font-bold">Invoice</Invoice.Text>
         <Invoice.Section className="items-end">
