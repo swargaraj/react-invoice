@@ -20,7 +20,7 @@ export function ApiReference() {
                 <Code>Invoice</Code>
               </td>
               <td>Namespace</td>
-              <td className="py-2">{"{ Root, Text, Section, Link }"}</td>
+              <td className="py-2">{"{ Root, Text, Section, Link, Image }"}</td>
             </tr>
             <tr className="border-b">
               <td>
@@ -49,6 +49,13 @@ export function ApiReference() {
               </td>
               <td>Component</td>
               <td className="py-2">Hyperlink</td>
+            </tr>
+            <tr className="border-b">
+              <td>
+                <Code>InvoiceImage</Code>
+              </td>
+              <td>Component</td>
+              <td className="py-2">Image element</td>
             </tr>
             <tr className="border-b">
               <td>
